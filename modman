@@ -1,0 +1,6 @@
+# ADM_ExtraContact
+skin/frontend/rwd/default/js/ExtraContact   skin/frontend/rwd/default/js/ExtraContact
+app/code/community/ADM/ExtraContact app/code/community/ADM/ExtraContact
+app/design/frontend/rwd/default/template/ExtraContact app/design/frontend/rwd/default/template/ExtraContact
+app/design/frontend/rwd/default/layout/ExtraContact.xml app/design/frontend/rwd/default/layout/ExtraContact.xml
+app/etc/modules/ADM_ExtraContact.xml    app/etc/modules/ADM_ExtraContact.xml
