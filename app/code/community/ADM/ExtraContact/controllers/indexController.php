@@ -1,6 +1,6 @@
 <?php
 
-class ADM_ExtraContact_indexController extends Mage_Core_Controller_Front_Action
+class ADM_ExtraContact_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function preDispatch()
     {

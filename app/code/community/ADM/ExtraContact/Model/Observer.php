@@ -49,19 +49,19 @@ class ADM_ExtraContact_Model_Observer extends Varien_Event_Observer
     {
         /** @var $block Mage_Core_Block_Abstract */
         $block = $observer->getBlock();
-        if ($block->getNameInLayout() == 'customer_account_dashboard_top') {
-            $this->insertBlockAfterCustomerAccountDashboardTop($block);
+        if ($block->getNameInLayout() == 'customer_account_dashboard_hello') {
+            $this->insertBlockAfterCustomerAccountDashboardHello($block);
         }
     }
     
     /**
-     * Insert block after customer_account_dashboard_top layout
+     * Insert block after customer_account_dashboard_hello layout
      * @param Mage_Core_Block_Abstract $block
      */
-    protected function insertBlockAfterCustomerAccountDashboardTop($block)
+    protected function insertBlockAfterCustomerAccountDashboardHello($block)
     {
         $child = clone $block;
-        $child->setNameInLayout('customer_account_dashboard_top_extra');
+        $child->setNameInLayout('customer_account_dashboard_hello_extra');
         $block->setChild('child', $child);
         $block->setTemplate('ExtraContact/dashboard.phtml');
     }
