@@ -1,0 +1,81 @@
+<?php if($this->getDisplayMessageBlock()) : ?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<?php endif ?>
+<div class="page-title">
+    <h1><?php echo Mage::helper('ExtraContact')->__('Contact Us') ?></h1>
+    <div>
+    	<?php echo $this->getPresentation() ?>
+    </div>
+</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="ExtraContactForm" method="post">
+    <div class="fieldset">
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('ExtraContact')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('ExtraContact')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('ExtraContact')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>            
+                <div class="field">
+                    <label for="name"><?php echo Mage::helper('ExtraContact')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('ExtraContact')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('ExtraContact')->getUserName()) ?>" class="input-text" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="telephone"><?php echo Mage::helper('ExtraContact')->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('ExtraContact')->__('Telephone') ?>" value="" class="input-text validate-phoneLax" type="text" />
+                </div>
+            </li>
+            <?php if(Mage::helper('ExtraContact')->activateCountry()): ?>
+            <li>
+            	<label for="country"><?php echo Mage::helper('ExtraContact')->__('Country') ?></label>
+            	<div class="input-box">
+            		<?php echo $this->getCountryHtmlSelect() ?>
+            	</div>
+            </li>
+            <?php endif ?>
+            <li>
+            	<label for="subject" class="required"><em>*</em><?php echo Mage::helper('ExtraContact')->__('Subject') ?></label>
+            	<div class="input-box">
+            		<?php echo $this->getSubjectsHtmlSelect() ?>
+            	</div>
+            </li>
+            <?php if(Mage::helper('ExtraContact')->orderManagementIsEnabled()): ?>
+            <li>
+            	<label for="order"><?php echo Mage::helper('ExtraContact')->__('Order ID') ?></label>
+            	<div class="input-box">
+            		<input name="order" id="order" title="<?php echo Mage::helper('ExtraContact')->__('Order ID') ?>" class="input-text validate-number" type="text" />
+            	</div>
+            </li>
+            <?php endif ?>            
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('ExtraContact')->__('Message') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('ExtraContact')->__('Message') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+            <?php if(Mage::helper('ExtraContact')->captchaIsEnabled()): ?>
+            <li>
+            	<?php echo $this->getChildHtml('captcha'); ?>
+            </li>
+            <?php endif ?>  
+            
+        </ul>
+    </div>
+    <div class="">
+        <input type="text" name="extracontact" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('ExtraContact')->__('Submit') ?></span></span></button>
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+    </div>
+</form>
+<?php $this->getProfiler(); ?>
+<script type="text/javascript">
+//<![CDATA[
+    var extraContactForm = new ExtraContactForm('ExtraContactForm', true);
+    extraContactForm.initSubjectSelector('subject', 'comment', <?php echo Mage::helper('ExtraContact')->getEmailIntroductions() ?>);
+//]]>
+</script>
